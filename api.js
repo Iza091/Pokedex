@@ -1,30 +1,7 @@
 let currentPokemonIndex = 1;
-let currentGeneration = 1; // Variable para almacenar la generación actual
+
 let lastSearchedPokemonIndex = null; // Variable para almacenar el último Pokémon buscado
 
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadPokemonData(currentPokemonIndex);
-});
-
-document.getElementById('generation-select').addEventListener('change', function () {
-    currentGeneration = parseInt(this.value);
-    currentPokemonIndex = getFirstPokemonIndex(currentGeneration);
-    loadPokemonData(currentPokemonIndex);
-});
-
-document.getElementById('previousButton').addEventListener('click', () => {
-    changePokemonIndex(-1);
-});
-
-document.getElementById('nextButton').addEventListener('click', () => {
-    changePokemonIndex(1);
-});
-// Obtener el combobox por su ID
-const generationSelect = document.getElementById('generation-select');
-
-// Eliminar el combobox
-generationSelect.remove(); // Esto eliminará el combobox del DOM
 
 
 
@@ -98,67 +75,6 @@ function loadPokemonData(selectedPokemonId) {
         .catch(error => console.error('Error:', error));
 }
 
-// Obtener el índice del primer Pokémon para una generación específica
-function getFirstPokemonIndex(generation) {
-    let firstPokemonIndex = 1;
-
-    switch (generation) {
-        case 1:
-            firstPokemonIndex = 1;
-            break;
-        case 2:
-            firstPokemonIndex = 152;
-            break;
-        case 3:
-            firstPokemonIndex = 252;
-            break;
-        case 4:
-            firstPokemonIndex = 387;
-            break;
-        case 5:
-            firstPokemonIndex = 494;
-            break;
-        case 6:
-            firstPokemonIndex = 650;
-            break;
-        default:
-            firstPokemonIndex = 1; // Si no se especifica, establecer el primer valor como 1
-            break;
-    }
-
-    return firstPokemonIndex;
-}
-
-// Obtener el índice del último Pokémon para una generación específica
-function getLastPokemonIndex(generation) {
-    let lastPokemonIndex = 0;
-
-    switch (generation) {
-        case 1:
-            lastPokemonIndex = 151;
-            break;
-        case 2:
-            lastPokemonIndex = 251;
-            break;
-        case 3:
-            lastPokemonIndex = 386;
-            break;
-        case 4:
-            lastPokemonIndex = 493;
-            break;
-        case 5:
-            lastPokemonIndex = 649;
-            break;
-        case 6:
-            lastPokemonIndex = 721;
-            break;
-        default:
-            lastPokemonIndex = 721; // Si no se especifica, establecer el último valor como 721
-            break;
-    }
-
-    return lastPokemonIndex;
-}
 
 // Agregar evento para el campo de búsqueda
 document.getElementById('searchPokemon').addEventListener('input', function () {
@@ -207,3 +123,18 @@ document.getElementById('searchPokemon').addEventListener('input', function () {
             // Manejar el error o realizar alguna acción específica si no se encuentra el Pokémon
         });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Obtener la imagen guía local
+    const img = document.getElementById('pokemon-image');
+    const localImageUrl = './img/poke-shadow.svg'; // Ruta a tu imagen local
+
+    // Asignar la URL de la imagen local al elemento img
+    img.src = localImageUrl;
+    img.width = 200;
+    img.height = 200;
+
+    // Resto de tu lógica para cargar los datos del Pokémon
+});
+

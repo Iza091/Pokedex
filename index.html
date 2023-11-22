@@ -3,38 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="./img/poke-shadow.svg" />
     <title>Pokedex Nacional </title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <!--  -->
+
 <body>
-    <!-- Esto no está programado porque si se lo quito, deja de funcionar -->
-    <div class="container">  
-        <h1>Pokedex Nacional</h1>
-        <div class="generation-selector">
-            <select id="generation-select">
-                <option value="1">Primera Generación</option>
-                <option value="2">Segunda Generación</option>
-                <option value="3">Tercera Generación</option>
-                <option value="4">Cuarta Generación</option>
-                <option value="5">Quinta Generación</option>
-                <option value="6">Sexta Generación</option>
-            </select>
-        </div>
-        <!-- Puedes omitir -->
+    <div class="pokemon-info">
+        <label for="searchPokemon">Buscar Pokémon:</label>
+        <input type="text" id="searchPokemon" placeholder="Nombre del Pokémon">
+        <img id="pokemon-image" alt="Pokemon Image">
+        <p><strong>N°:</strong> <span id="pokemon-number"></span></p>
+        <p><strong>Nombre:</strong> <span id="pokemon-name"></span></p>
+        <p><strong>Tipos:</strong> <span id="pokemon-types" class="pokemon-types"></span></p>
 
 
-        <div class="pokemon-info">
-            <label for="searchPokemon">Buscar Pokémon:</label>
-            <input type="text" id="searchPokemon" placeholder="Nombre del Pokémon">
-            <img id="pokemon-image" alt="Pokemon Image">
-            <p><strong>N°:</strong> <span id="pokemon-number"></span></p>
-            <p><strong>Nombre:</strong> <span id="pokemon-name"></span></p>
-            <p><strong></strong> <span id="pokemon-types" class="pokemon-types"></span></p>
-
-            <button id="previousButton">Anterior</button>
-            <button id="nextButton">Siguiente</button>
-        </div>
     </div>
     <script src="api.js"></script>
 
