@@ -107,22 +107,28 @@ function setPokemonInfo(pokemon) {
 function setPokemonMoves(moves) {
     const container = document.getElementById('moves-list');
     container.innerHTML = '';
-    // Tomamos los primeros 8 movimientos
-    const firstMoves = moves.slice(0, 8);
+
+    // Filtra movimientos aprendidos por nivel (level-up)
+    const levelUpMoves = moves.filter(m =>
+        m.version_group_details.some(
+            vgd => vgd.move_learn_method.name === 'level-up'
+        )
+    );
+
+    // Tomamos los primeros 8 movimientos aprendidos por nivel
+    const firstMoves = levelUpMoves.slice(0, 8);
 
     // Para cada movimiento, obtenemos el nombre en español desde la API
     firstMoves.forEach(async ({ move }) => {
         try {
             const res = await fetch(move.url);
             const data = await res.json();
-            // Busca el nombre en español
             const spanishName = data.names.find(n => n.language.name === 'es');
             const div = document.createElement('div');
             div.className = 'move-badge';
             div.textContent = spanishName ? spanishName.name : move.name.replace('-', ' ');
             container.appendChild(div);
         } catch {
-            // Si falla, muestra el nombre en inglés
             const div = document.createElement('div');
             div.className = 'move-badge';
             div.textContent = move.name.replace('-', ' ');
