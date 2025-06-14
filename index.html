@@ -5,92 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokédex</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/your-code-here.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <h1 id="pokédex" class="title">Pokédex</h1>
-            <div class="search-container">
-                <input type="text" id="searchPokemon" class="search-input" placeholder="Buscar Pokémon...">
+        <h1 class="title">Pokédex</h1>
+        <input id="searchPokemon" class="search" type="text" placeholder="Buscar Pokémon...">
+
+        <div id="errorBox" class="error-message"></div> <!-- Aquí, antes de la card -->
+
+        <div class="card">
+            <div class="header">
+                <span id="pokemon-number"></span>
+                <h2 id="pokemon-name"></h2>
             </div>
-        </header>
-
-        <main class="pokedex-container">
-            <div class="pokemon-card">
-                <div class="pokemon-header">
-                    <span id="pokemon-number" class="pokemon-number"></span>
-                    <h2 id="pokemon-name" class="pokemon-name"></h2>
-                </div>
-
-                <div class="pokemon-image-container">
-                    <img id="pokemon-image" class="pokemon-image" src="./img/poke-shadow.svg" alt="Pokemon">
-                </div>
-
-                <div id="pokemon-types" class="pokemon-types"></div>
-
-                <div class="tabs">
-                    <div class="tabs-header">
-                        <button class="tab-button active" data-tab="stats">Estadísticas</button>
-                        <button class="tab-button" data-tab="info">Información</button>
-                        <button class="tab-button" data-tab="moves">Movimientos</button>
-                    </div>
-
-                    <div id="stats" class="tab-content active">
-                        <div class="stats-container">
-                            <div class="stat-bar">
-                                <div class="stat-label">HP</div>
-                                <div class="progress-bar">
-                                    <div id="hp-progress" class="progress"></div>
-                                </div>
-                                <span id="hp-value" class="stat-value"></span>
-                            </div>
-
-                            <div class="stat-bar">
-                                <div class="stat-label">Ataque</div>
-                                <div class="progress-bar">
-                                    <div id="attack-progress" class="progress"></div>
-                                </div>
-                                <span id="attack-value" class="stat-value"></span>
-                            </div>
-
-                            <div class="stat-bar">
-                                <div class="stat-label">Defensa</div>
-                                <div class="progress-bar">
-                                    <div id="defense-progress" class="progress"></div>
-                                </div>
-                                <span id="defense-value" class="stat-value"></span>
-                            </div>
-
-                            <div class="stat-bar">
-                                <div class="stat-label">Velocidad</div>
-                                <div class="progress-bar">
-                                    <div id="speed-progress" class="progress"></div>
-                                </div>
-                                <span id="speed-value" class="stat-value"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="info" class="tab-content">
-                        <div class="physical-info">
-                            <div class="info-item">
-                                <span class="info-label">Altura</span>
-                                <span id="pokemon-height" class="info-value"></span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">Peso</span>
-                                <span id="pokemon-weight" class="info-value"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="moves" class="tab-content">
-                        <div id="moves-list" class="moves-grid"></div>
-                    </div>
-                </div>
+            <img id="pokemon-image" class="image" src="./img/poke-shadow.svg" alt="Pokemon">
+            <div id="pokemon-types" class="types"></div>
+            
+            <div class="tabs">
+                <button class="tab active" data-tab="stats">Estadísticas</button>
+                <button class="tab" data-tab="info">Información</button>
+                <button class="tab" data-tab="moves">Movimientos</button>
             </div>
-        </main>
+
+            <div id="stats" class="tab-content active">
+                <div class="stat"><span>HP</span><div class="bar"><div id="hp-progress"></div></div><span id="hp-value"></span></div>
+                <div class="stat"><span>Ataque</span><div class="bar"><div id="attack-progress"></div></div><span id="attack-value"></span></div>
+                <div class="stat"><span>Defensa</span><div class="bar"><div id="defense-progress"></div></div><span id="defense-value"></span></div>
+                <div class="stat"><span>Velocidad</span><div class="bar"><div id="speed-progress"></div></div><span id="speed-value"></span></div>
+            </div>
+
+            <div id="info" class="tab-content">
+                <div class="info"><span>Altura</span><span id="pokemon-height"></span></div>
+                <div class="info"><span>Peso</span><span id="pokemon-weight"></span></div>
+            </div>
+
+            <div id="moves" class="tab-content">
+                <div id="moves-list" class="moves"></div>
+            </div>
+        </div>
     </div>
     <script src="api.js"></script>
 </body>
